@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import styles from './App.module.css';
 import poweredImage from './assets/img/powered.png';
+import { Nivel } from './helpers/imc';
 
 function App() {
   const [altura, definirAltura] = useState<number>(0);
   const [peso, definirPeso] = useState<number>(0);
 
   const manipularCalculoButtun = () => {
-    if (altura && peso){
+    if (altura && peso) {
 
     } else {
       alert("Digite todos os campos.");
@@ -24,13 +25,13 @@ function App() {
 
           <h1>Calcule seu IMC.</h1>
           <p>IMC é a sigla para índice de Massa Corpórea, parâmetro adotado pela Organização Mundial de saúde para calcular o peso ideal de cada pessoa.</p>
-          
+
           <input type='number'
             placeholder="Digite a sua altura. Ex.: 1,5 (em metros)"
             value={altura > 0 ? altura : ''}
             onChange={e => definirAltura(parseFloat(e.target.value))}
           />
-          
+
           <input type='number'
             placeholder="Digite o seu peso. Ex. 82,5 (em kg)"
             value={peso > 0 ? peso : ''}
