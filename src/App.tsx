@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import styles from './App.module.css';
 import poweredImage from './assets/img/powered.png';
-import { Nivel } from './helpers/imc';
+import { niveis, Nivel } from './helpers/imc';
+import { GridItem } from './components/GridItem'
 
 function App() {
   const [altura, definirAltura] = useState<number>(0);
@@ -41,7 +42,11 @@ function App() {
           <button onClick={manipularCalculoButtun} > Calcular </button>
         </div>
         <div className={styles.rightSide}>
-          aqui
+          <div className={styles.grid}>
+            {niveis.map((item, key) =>
+              (<GridItem key={key} item={item} />)
+            )}
+          </div>
         </div>
       </div>
 
