@@ -6,6 +6,13 @@ function App() {
   const [altura, definirAltura] = useState<number>(0);
   const [peso, definirPeso] = useState<number>(0);
 
+  const manipularCalculoButtun = () => {
+    if (altura && peso){
+
+    } else {
+      alert("Digite todos os campos.");
+    }
+  }
 
   return (
     <div className={styles.main}>
@@ -14,7 +21,7 @@ function App() {
       </header>
       <div className={styles.container}>
         <div className={styles.leftSide}>
-          
+
           <h1>Calcule seu IMC.</h1>
           <p>IMC é a sigla para índice de Massa Corpórea, parâmetro adotado pela Organização Mundial de saúde para calcular o peso ideal de cada pessoa.</p>
           
@@ -29,6 +36,8 @@ function App() {
             value={peso > 0 ? peso : ''}
             onChange={e => definirPeso(parseFloat(e.target.value))}
           />
+
+          <button onClick={manipularCalculoButtun} > Calcular </button>
         </div>
         <div className={styles.rightSide}>
           aqui
