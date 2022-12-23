@@ -1,19 +1,26 @@
 import { useState } from 'react';
 import styles from './App.module.css';
 import poweredImage from './assets/img/powered.png';
-import { niveis, Nivel } from './helpers/imc';
+import leftarrowImage from './assets/img/leftarrow.png';
+import { calculoImc, niveis, Nivel } from './helpers/imc';
 import { GridItem } from './components/GridItem'
 
 function App() {
   const [altura, definirAltura] = useState<number>(0);
   const [peso, definirPeso] = useState<number>(0);
+  const [resultado, definirResultado] = useState<Nivel | null>(null);
 
   const manipularCalculoButtun = () => {
     if (altura && peso) {
-
+      definirResultado(calculoImc(altura, peso));
     } else {
       alert("Digite todos os campos.");
     }
+  }
+  const botaoVoltar = () => {
+    definirResultado(null);
+    definirAltura(0);
+    definirPeso(0);
   }
 
   return (
@@ -42,11 +49,21 @@ function App() {
           <button onClick={manipularCalculoButtun} > Calcular </button>
         </div>
         <div className={styles.rightSide}>
-          <div className={styles.grid}>
-            {niveis.map((item, key) =>
-              (<GridItem key={key} item={item} />)
-            )}
-          </div>
+          {!resultado &&
+            <div className={styles.grid}>
+              {niveis.map((item, key) =>
+                (<GridItem key={key} item={item} />)
+              )}
+            </div>
+          }
+          {resultado &&
+            <div className={styles.resultadoBig}>
+              <div className={styles.setaDireita} onClick={botaoVoltar}>
+                <img src={leftarrowImage} alt="" width={25} />
+              </div>
+              <GridItem item={resultado} />
+            </div>
+          }
         </div>
       </div>
 

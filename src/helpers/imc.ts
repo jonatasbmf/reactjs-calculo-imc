@@ -17,8 +17,10 @@ export const calculoImc = (altura: number, peso: number) => {
 
     for (let i in niveis) {
         if (imc >= niveis[i].imc[0] && imc < niveis[i].imc[1]) {
-            niveis[i].seuImc = imc;
-            return niveis[i];
+            let demonstrativo : Nivel = {...niveis[i]};
+            
+            demonstrativo.seuImc = parseFloat(imc.toFixed(2));
+            return demonstrativo;
         }
     }
     return null;

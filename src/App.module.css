@@ -73,3 +73,27 @@ body {
     grid-template-columns: repeat(2, 1fr);
     gap: 20 px;
 }
+
+.container .rightSide .resultadoBig {
+    flex: 1;
+    display: flex;
+}
+
+.container .rightSide .setaDireita {
+    position: absolute;
+    background-color: #227C9D;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-left: -35px;
+    margin-top: 145px;
+    transition: all ease .3s;
+}
+
+.container .rightSide .setaDireita:hover {
+    opacity: .9;
+}
