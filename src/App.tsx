@@ -25,8 +25,10 @@ function App() {
 
   return (
     <div className={styles.main}>
-      <header className={styles.headerContainer}>
-        <img src={poweredImage} alt='Powered' width={150} />
+      <header>
+        <div className={styles.headerContainer}>
+          <img src={poweredImage} alt='Powered' width={150} />
+        </div>
       </header>
       <div className={styles.container}>
         <div className={styles.leftSide}>
@@ -38,15 +40,18 @@ function App() {
             placeholder="Digite a sua altura. Ex.: 1,5 (em metros)"
             value={altura > 0 ? altura : ''}
             onChange={e => definirAltura(parseFloat(e.target.value))}
+            disabled={resultado ? true : false}
           />
 
           <input type='number'
             placeholder="Digite o seu peso. Ex. 82,5 (em kg)"
             value={peso > 0 ? peso : ''}
             onChange={e => definirPeso(parseFloat(e.target.value))}
+            disabled={resultado ? true : false}
           />
 
-          <button onClick={manipularCalculoButtun} > Calcular </button>
+          <button onClick={manipularCalculoButtun}
+            disabled={resultado ? true : false} > Calcular </button>
         </div>
         <div className={styles.rightSide}>
           {!resultado &&
@@ -66,7 +71,6 @@ function App() {
           }
         </div>
       </div>
-
     </div>
   );
 }
